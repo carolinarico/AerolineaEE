@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>AerolineaEE</title>
+    </head>
+    <body align="center">
+        <h:form rendered="#{adminMB.idLogin == 1}">
+            <table align="center" height="650" width="100%">
+                <tr height="150" bgcolor="#A52A2A" align="center">
+                    <td colspan="2">
+                        <table align="center">
+                            <tr>
+                                <td width="50%" align="right"><h:graphicImage value="recursos/Unicauca.jpg" height="100" width="12%"/></td>                            
+                                <td width="50%"><h:outputText value=" Sistema de Reservas AerolineaEE"/></td>
+                            </tr>
+                        </table>                                      
+                    </td>
+                </tr>
+                <tr height="380">
+                    <td width="20%" bgcolor="#B0E0E6" align="left" valign="top">                        
+                        <h:commandLink value="Listar Ciudades" action="#{ciudadMB.mostrarListaCiudad()}"/><br/>
+                        <h:commandLink value="Listar Clientes" action="#{clienteMB.mostrarListaCliente()}"/><br/>
+                        <h:commandLink value="Listar Vuelos" action="#{vueloMB.mostrarListaVuelo()}"/><br/>
+                        <h:commandLink value="Cerrar Sesion" action="#{adminMB.cerrarSesionAdmin()}"/>
+                    </td>
+                    <td width="80%" bgcolor="#EEE8AA" align="left" valign="top">
+                        <h:commandLink value="Crear Cliente" action="#{clienteMB.mostrarFormCrearCliente()}"/><br/><br/>
+                        <h:outputLabel value="Lista de Clientes"/>
+                        <h:dataTable value="#{clienteMB.clientes}" var="clientes" border="1" binding="#{clienteMB.clienteSelect}">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdCliente"/>
+                                </f:facet>
+                                <h:outputText value="#{clientes.idcliente}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre"/>
+                                </f:facet>
+                                <h:outputText value="#{clientes.nombres}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Apellido"/>
+                                </f:facet>
+                                <h:outputText value="#{clientes.apellidos}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="T.I."/>
+                                </f:facet>
+                                <h:outputText value="#{clientes.tipoident}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="N° Identificacion"/>
+                                </f:facet>
+                                <h:outputText value="#{clientes.numident}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Login"/>
+                                </f:facet>
+                                <h:outputText value="#{clientes.login}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Password"/>
+                                </f:facet>
+                                <h:outputText value="#{clientes.password}"/>
+                            </h:column> 
+                            <h:column>
+                                <h:commandLink value="Editar" action="#{clienteMB.mostrarFormEditarCliente()}"/>
+                            </h:column>
+                            <h:column>
+                                <h:commandLink value="Eliminar" action="#{clienteMB.mostrarFormEliminarCliente()}"/>
+                            </h:column>
+                        </h:dataTable><br/>
+                        <h:outputLabel value="#{clienteMB.mensaje}"/><br/>
+                    </td>
+                </tr>
+                <tr height="100" bgcolor="#FFA07A">
+                    <td colspan="2" align="right">
+                        <h:outputText value="Presentado por: "/><br/><br/>
+                        <h:outputLabel value="Juan Sebastián Benavides"/><br/>
+                        <h:outputLabel value="Edwar Javier Girón"/><br/>
+                        <h:outputLabel value="Carolina Rico Olarte"/>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>AerolineEE</title>
+    </head>
+    <body align="center">
+        <h:form rendered="#{adminMB.idLogin == 1}">
+            <table align="center" height="650" width="100%">
+                <tr height="150" bgcolor="#A52A2A" align="center">
+                    <td colspan="2">
+                        <table align="center">
+                            <tr>
+                                <td width="50%" align="right"><h:graphicImage value="recursos/Unicauca.jpg" height="100" width="12%"/></td>                            
+                                <td width="50%"><h:outputText value=" Sistema de Reservas AerolineaEE"/></td>
+                            </tr>
+                        </table>                                       
+                    </td>
+                </tr>
+                <tr height="380" valign="top">
+                    <td width="20%" bgcolor="#B0E0E6" align="left">                        
+                        <h:commandLink value="Listar Ciudades" action="#{ciudadMB.mostrarListaCiudad()}"/><br/>
+                        <h:commandLink value="Listar Clientes" action="#{clienteMB.mostrarListaCliente()}"/><br/>
+                        <h:commandLink value="Listar Vuelos" action="#{vueloMB.mostrarListaVuelo()}"/><br/>
+                        <h:commandLink value="Cerrar Sesion" action="#{adminMB.cerrarSesionAdmin()}"/>
+                    </td>
+                    <td width="80%" bgcolor="#EEE8AA" align="left" valign="top">
+                        <table>
+                            <tr>
+                                <td><h:outputLabel value="Nombres: "/></td>
+                                <td><h:inputText value="#{clienteMB.cliente.nombres}"/></td>
+                            </tr>
+                            <tr>
+                                <td> <h:outputLabel value="Apellidos: "/></td>
+                                <td><h:inputText value="#{clienteMB.cliente.apellidos}"/></td>
+                            </tr>                            
+                            <tr>
+                                <td> <h:outputLabel value="T.I.: "/></td>
+                                <td>
+                                    <h:selectOneMenu value="#{clienteMB.cliente.tipoident}">
+                                        <f:selectItem itemValue="C.C."/>
+                                        <f:selectItem itemValue="C.E."/>
+                                        <f:selectItem itemValue="Pasaporte"/>
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="N° Identificación: "/></td>
+                                <td> <h:inputText value="#{clienteMB.cliente.numident}"/></td>
+                            </tr>
+                            <tr>                                
+                                <td><h:outputLabel value="Login: "/></td>
+                                <td><h:inputText value="#{clienteMB.cliente.login}"/></td>
+                            </tr>
+                            <tr>                                
+                                <td><h:outputLabel value="Password: "/></td>
+                                <td><h:inputText value="#{clienteMB.cliente.password}"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center"><h:commandButton value="Ingresar Cliente" action="#{clienteMB.crearCliente()}"/>                                
+                                </td>
+                            </tr>                        
+                        </table>                        
+                    </td>
+                </tr>
+                <tr height="100" bgcolor="#FFA07A">
+                    <td colspan="2" align="right">
+                        <h:outputText value="Presentado por: "/><br/><br/>
+                        <h:outputLabel value="Juan Sebastián Benavides"/><br/>
+                        <h:outputLabel value="Edwar Javier Girón"/><br/>
+                        <h:outputLabel value="Carolina Rico Olarte"/>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+    </body>
+</html>

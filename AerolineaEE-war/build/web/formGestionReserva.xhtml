@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>AerolineaEE</title>
+    </h:head>
+    
+    <script type="text/javascript">
+				function pasaDatosCliente() {
+					var idus = document.getElementById("formPrincipal:valuID").value;
+					document.getElementById("formPrincipal:usuID").value = idus;
+				}
+    </script>
+    
+    <body align="center" onload="pasaDatosCliente();">
+        <h:form rendered="#{clienteMB.idLogin == 1}" id="formPrincipal">
+            <table align="center" height="650" width="100%">
+                <tr height="150" bgcolor="#A52A2A" align="center">
+                    <td colspan="2">
+                        <table align="center">
+                            <tr>
+                                <td width="50%" align="right"><h:graphicImage value="recursos/Unicauca.jpg" height="100" width="12%"/></td>                            
+                                <td width="50%"><h:outputText value=" Sistema de Reservas AerolineaEE"/></td>
+                            </tr>
+                        </table>                                         
+                    </td>
+                </tr>
+                <tr height="380" valign="top">
+                    <td width="20%" bgcolor="#B0E0E6" align="left">                        
+                        <h:commandLink value="Listar Reservas" action="#{reservaMB.mostrarListaReserva()}"/><br/>
+                        <h:commandLink value="Cerrar Sesion" action="#{clienteMB.cerrarSesionCliente()}"/>
+                    </td>
+                    <td width="80%" bgcolor="#EEE8AA" align="left" valign="top">
+                        <h:outputLabel value="Buscar vuelo:"/><br/>
+                        <table>
+                            <tr>
+                                <td><h:outputLabel value="Ciudad de origen: "/></td>
+                                <td>
+                                    <h:selectOneMenu value="#{reservaMB.idcity1}" >
+                                        <f:selectItems value="#{reservaMB.ciudades}" var="ciulist11" itemLabel="#{ciulist11.nombre}" itemValue="#{ciulist11.idciudad}" />
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Ciudad de destino: "/></td>
+                                <td>
+                                    <h:selectOneMenu value="#{reservaMB.idcity2}" >
+                                        <f:selectItems value="#{reservaMB.ciudades}" var="ciulist21" itemLabel="#{ciulist21.nombre}" itemValue="#{ciulist21.idciudad}" />
+                                    </h:selectOneMenu> 
+                                </td>
+                            </tr>
+                        </table><br/>
+                        <h:commandButton value="Buscar" action="#{reservaMB.buscarVuelos}"/><br/>
+                        
+                        <h:outputLabel value="Vuelos Reservados"/>
+                        <h:dataTable value="#{reservaMB.vuelosR}" var="vuelosR" border="1" binding="#{reservaMB.vueloRSelect}">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdVuelo"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosR.idvuelo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Origen"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosR.origen}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Destino"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosR.destino}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Codigo"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosR.codigo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosR.fechav}"/>
+                            </h:column>                             
+                            <h:column>
+                                <h:commandLink value="Eliminar Reserva" action="#{reservaMB.eliminarReserva()}"/>
+                            </h:column>                            
+                        </h:dataTable><br/>
+                        
+                        <h:outputLabel value="Vuelos No Reservados"/>
+                        <h:dataTable value="#{reservaMB.vuelosNR}" var="vuelosNR" border="1" binding="#{reservaMB.vueloNRSelect}">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdVuelo"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosNR.idvuelo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Origen"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosNR.origen}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Destino"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosNR.destino}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Codigo"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosNR.codigo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha"/>
+                                </f:facet>
+                                <h:outputText value="#{vuelosNR.fechav}"/>
+                            </h:column>                             
+                            <h:column>
+                                <h:commandLink value="Reservar" action="#{reservaMB.realizarReserva()}"/>
+                            </h:column>                            
+                        </h:dataTable><br/>
+                        
+                    </td>
+                </tr>
+                <tr height="100" bgcolor="#FFA07A">
+                    <td colspan="2" align="right">
+                        <h:outputText value="Presentado por: "/><br/><br/>
+                        <h:outputLabel value="Juan Sebastián Benavides"/><br/>
+                        <h:outputLabel value="Edwar Javier Girón"/><br/>
+                        <h:outputLabel value="Carolina Rico Olarte"/>
+                    </td>
+                </tr>
+            </table>
+            <h:inputHidden value="#{clienteMB.cliente.idcliente}" id="valuID"/>
+            <h:inputHidden value="#{reservaMB.idUsuario}" id="usuID"/>
+        </h:form>
+    </body>
+</html>

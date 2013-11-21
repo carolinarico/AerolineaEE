@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>AerolineaEE</title>
+        <h:outputScript name="jsf.js" library="javax.faces"/>
+    </h:head>
+    <h:body>
+        <h:form rendered="#{adminMB.idLogin == 1}">
+            <table align="center" height="650" width="100%">
+                <tr height="150" bgcolor="#A52A2A" align="center">
+                    <td colspan="2">
+                        <table align="center">
+                            <tr>
+                                <td width="50%" align="right"><h:graphicImage value="recursos/Unicauca.jpg" height="100" width="12%"/></td>                            
+                                <td width="50%"><h:outputText value=" Sistema de Reservas AerolineaEE"/></td>
+                            </tr>
+                        </table>                                       
+                    </td>
+                </tr>
+                <tr height="380" valign="top">
+                    <td width="20%" bgcolor="#B0E0E6" align="left">                        
+                        <h:commandLink value="Listar Ciudades" action="#{ciudadMB.mostrarListaCiudad()}"/><br/>
+                        <h:commandLink value="Listar Clientes" action="#{clienteMB.mostrarListaCliente()}"/><br/>
+                        <h:commandLink value="Listar Vuelos" action="#{vueloMB.mostrarListaVuelo()}"/><br/>
+                        <h:commandLink value="Cerrar Sesion" action="#{adminMB.cerrarSesionAdmin()}"/>
+                    </td>
+                    <td width="80%" bgcolor="#EEE8AA" align="left" valign="top">
+                        <table>
+                            <tr>
+                                <td><h:outputLabel value="Ciudad de Origen: "/></td>
+                                <td>  
+                                    <h:selectOneMenu value="#{vueloMB.idcity1}" >
+                                        <f:selectItems value="#{vueloMB.ciudades}" var="ciulist1" itemLabel="#{ciulist1.nombre}" itemValue="#{ciulist1.idciudad}" />
+                                    </h:selectOneMenu>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <h:outputLabel value="Ciudad de Destino: "/></td>
+                                <td>
+                                    <h:selectOneMenu value="#{vueloMB.idcity2}" >
+                                        <f:selectItems value="#{vueloMB.ciudades}" var="ciulist2" itemLabel="#{ciulist2.nombre}" itemValue="#{ciulist2.idciudad}" />
+                                    </h:selectOneMenu>                                    
+                                </td>                                
+                            </tr>                            
+                            <tr>
+                                <td> <h:outputLabel value="Código: "/></td>
+                                <td><h:inputText value="#{vueloMB.vuelo.codigo}"/></td>                                
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Fecha: "/></td>
+                                <td>                                            
+                                    <p:calendar value="#{vueloMB.fechaVuelo}"
+                                                pattern="dd/MM/yyyy" mindate="#{vueloMB.today}" />                             
+                                </td>
+                            </tr>                            
+                            <tr>
+                                <td colspan="2" align="center"><h:commandButton value="Ingresar Vuelo" action="#{vueloMB.crearVuelo()}"/>                                
+                                </td>
+                            </tr>                        
+                        </table>                        
+                    </td>
+                </tr>
+                <tr height="100" bgcolor="#FFA07A">
+                    <td colspan="2" align="right">
+                        <h:outputText value="Presentado por: "/><br/><br/>
+                        <h:outputLabel value="Juan Sebastián Benavides"/><br/>
+                        <h:outputLabel value="Edwar Javier Girón"/><br/>
+                        <h:outputLabel value="Carolina Rico Olarte"/>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>

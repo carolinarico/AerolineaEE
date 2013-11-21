@@ -127,7 +127,7 @@ public class VueloMB {
         this.obtenerCiudadesSeleccionadas();
         vuelo.setDestino(destino);
         vuelo.setOrigen(origen);
-        System.out.println("\n"+vuelo.getCodigo()+ "\n"+vuelo.getFechav()+ "\n"+vuelo.getOrigen()+ "\n"+vuelo.getDestino());
+        //System.out.println("\n"+vuelo.getCodigo()+ "\n"+vuelo.getFechav()+ "\n"+vuelo.getOrigen()+ "\n"+vuelo.getDestino());
         if (vueEJB.crearVuelo(vuelo) == true) {
             mensaje = "Vuelo creado exitosamente";
         } else {

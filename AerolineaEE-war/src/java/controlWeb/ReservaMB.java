@@ -37,6 +37,7 @@ public class ReservaMB {
     private ClienteEJB clienEJB;
     @EJB
     private CiudadEJB ciuEJB;
+    
     private Reserva reserva;
     private String mensaje;
     private List<Reserva> reservas;
@@ -192,26 +193,10 @@ public class ReservaMB {
         this.vueloRSelect = vueloRSelect;
     }
 
-//    public String crearReserva(){        
-//        if(resEJB.crearReserva(reserva)==true){
-//            mensaje="Reserva realizada exitosamente";
-//        }else{
-//            mensaje="Reserva no realizada";
-//        }
-//        reservas = new ArrayList<Reserva>();
-//        reservas = resEJB.obtenerReservas();
-//        return "listaReserva.xhtml";
-//    }
-//    
-//    public String mostrarFormCrearReserva(){
-//        mensaje = " ";
-//        reserva = new Reserva();
-//        return "formCrearReserva.xhtml";
-//    }
     public String mostrarListaReserva() {
-        mensaje = " ";
-        reservas = new ArrayList<Reserva>();
-        reservas = resEJB.obtenerReservas();
+        mensaje = " ";               
+        reservas = new ArrayList<Reserva>();        
+        reservas = resEJB.obtenerReservaByCliente(idUsuario);        
         return "listaReserva.xhtml";
     }
 
@@ -221,7 +206,6 @@ public class ReservaMB {
         this.listarVuelos();
         reserva = new Reserva();
         return "formGestionReserva.xhtml";
-
     }
 
     public void obtenerCiudadesSeleccionadas() {
@@ -286,18 +270,18 @@ public class ReservaMB {
     public String buscarVuelos() {
         this.obtenerCiudadesSeleccionadas();
         this.listarVuelos();
-        System.out.println("Vuelos: " + vuelos.size());
-        System.out.println("Origen: " + origen);
-        System.out.println("Destino: " + destino);
+//        System.out.println("Vuelos: " + vuelos.size());
+//        System.out.println("Origen: " + origen);
+//        System.out.println("Destino: " + destino);
         vuelosR = new ArrayList<Vuelo>();
         vuelosNR = new ArrayList<Vuelo>();
 
         for (int i = 0; i < vuelos.size(); i++) {
             Vuelo v = new Vuelo();
             v = vuelos.get(i);
-            System.out.println("Vuelo antes: " + v.getCodigo());
+            //System.out.println("Vuelo antes: " + v.getCodigo());
             if (v.getOrigen().getIdciudad() == origen.getIdciudad() && v.getDestino().getIdciudad() == destino.getIdciudad()) {
-                System.out.println("Vuelo cumple: " + v.getCodigo());
+                //System.out.println("Vuelo cumple: " + v.getCodigo());
                 if (vuelosCliente.contains(v)) {
                     System.out.println("R: " + v);
                     vuelosR.add(v);

@@ -8,8 +8,16 @@ and open the template in the editor.
     <h:head>
         <title>AerolineaEE</title>
     </h:head>
-    <body align="center">
-        <h:form rendered="#{clienteMB.idLogin == 1}">
+    <script type="text/javascript">
+				function pasaDatosCliente() {
+					var idus = document.getElementById("formPrincipal:valuID").value;
+					document.getElementById("formPrincipal:usuID").value = idus;
+				}
+    </script>
+    <body align="center" onload="pasaDatosCliente();">
+        <h:form rendered="#{clienteMB.idLogin == 1}" id="formPrincipal">
+            <h:inputHidden value="#{clienteMB.cliente.idcliente}" id="valuID"/>
+            <h:inputHidden value="#{reservaMB.idUsuario}" id="usuID"/>
             <table align="center" height="650" width="100%">
                 <tr height="150" bgcolor="#A52A2A" align="center">
                     <td colspan="2">

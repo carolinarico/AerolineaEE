@@ -27,7 +27,7 @@ public class ReservaEJB {
 
     public boolean crearReserva(Reserva r) {
         try {
-            em.persist(em.merge(r));
+            em.persist(r);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -66,8 +66,8 @@ public class ReservaEJB {
         return true;
     }
 
-    public List<Reserva> obtenerReservaByCliente(int idcliente) {
-        List<Reserva> reserva = new ArrayList<Reserva>();
+    public List <Reserva> obtenerReservaByCliente(int idcliente) {
+        List <Reserva> reserva = new ArrayList<Reserva>();
         Query q = em.createQuery("SELECT r FROM Reserva r WHERE r.idcliente.idcliente = :idcliente");
         q.setParameter("idcliente", new Integer(idcliente));
         try {

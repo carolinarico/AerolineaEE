@@ -28,6 +28,9 @@ and open the template in the editor.
                         <h:commandLink value="Cerrar Sesion" action="#{clienteMB.cerrarSesionCliente()}"/>
                     </td>
                     <td width="80%" bgcolor="#EEE8AA" align="left" valign="top">
+                        <div style="text-align: right">
+                        <h:outputText value="Sesion Iniciada #{clienteMB.cliente.nombres} #{clienteMB.cliente.apellidos}"/>
+                        </div>
                         <h:outputLabel value="Buscar vuelo:"/><br/>
                         <table>
                             <tr>

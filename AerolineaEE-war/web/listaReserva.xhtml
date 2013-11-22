@@ -7,16 +7,23 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>AerolineaEE</title>
+        <style type="text/css">
+                .texto{
+                    text-align: right;
+                }
+            
+        </style>
     </h:head>    
     <body align="center" >
+
         <h:form rendered="#{clienteMB.idLogin == 1}">          
             <table align="center" height="650" width="100%">
                 <tr height="150" bgcolor="#A52A2A" align="center">
                     <td colspan="2">
                         <table align="center">
                             <tr>
-                                <td width="50%" align="right"><h:graphicImage value="recursos/Unicauca.jpg" height="100" width="12%"/></td>                            
-                                <td width="50%"><h:outputText value=" Sistema de Reservas AerolineaEE"/></td>
+                                <td width="40%" align="right"><h:graphicImage value="recursos/Unicauca.jpg" height="100" width="14%"/></td>
+                                <td width="60%"><div style="color:#FFFFFF; font-size:20px;"><h:outputText value=" Sistema de Reservas AerolineaEE"/></div></td>
                             </tr>
                         </table>                                      
                     </td>
@@ -26,7 +33,11 @@ and open the template in the editor.
                         <h:commandLink value="Listar Reservas" action="#{reservaMB.mostrarListaReserva()}"/><br/>
                         <h:commandLink value="Cerrar Sesion" action="#{clienteMB.cerrarSesionCliente()}"/>
                     </td>
+
                     <td width="80%" bgcolor="#EEE8AA" align="left" valign="top">
+                        <div style="text-align: right">
+                        <h:outputText value="Sesion Iniciada #{clienteMB.cliente.nombres} #{clienteMB.cliente.apellidos}"/>
+                        </div>
                         <h:commandLink value="Gestionar Reserva" action="#{reservaMB.mostrarFormGestionReserva()}"/><br/><br/>
                         <h:outputLabel value="Lista de Reservas"/>
                         <h:dataTable value="#{reservaMB.reservas}" var="reservas" border="1" binding="#{reservaMB.reservaSelect}">
@@ -79,10 +90,12 @@ and open the template in the editor.
                                 <h:outputText value="#{reservas.fechar}"/>
                             </h:column>                            
                         </h:dataTable><br/>
-                        
-                    </td>                    
+
+                    </td>  
+
                 </tr>
                 <tr height="100" bgcolor="#FFA07A">
+
                     <td colspan="2" align="right">
                         <h:outputText value="Presentado por: "/><br/><br/>
                         <h:outputLabel value="Juan Sebastián Benavides"/><br/>

@@ -230,7 +230,8 @@ public class ReservaMB {
     public void listarVuelos() {
         vuelos = new ArrayList<Vuelo>();
         vuelos = vueEJB.obtenerVuelos();
-
+        vuelosR = new ArrayList<Vuelo>();
+        vuelosNR = new ArrayList<Vuelo>();
         vuelosCliente = new ArrayList<Vuelo>();
         reservas = new ArrayList<Reserva>();
         reservas = resEJB.obtenerReservaByCliente(idUsuario);
@@ -273,9 +274,6 @@ public class ReservaMB {
 //        System.out.println("Vuelos: " + vuelos.size());
 //        System.out.println("Origen: " + origen);
 //        System.out.println("Destino: " + destino);
-        vuelosR = new ArrayList<Vuelo>();
-        vuelosNR = new ArrayList<Vuelo>();
-
         for (int i = 0; i < vuelos.size(); i++) {
             Vuelo v = new Vuelo();
             v = vuelos.get(i);

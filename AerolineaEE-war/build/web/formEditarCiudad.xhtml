@@ -15,8 +15,8 @@ and open the template in the editor.
                     <td colspan="2">
                         <table align="center">
                             <tr>
-                                <td width="50%" align="right"><h:graphicImage value="recursos/Unicauca.jpg" height="100" width="12%"/></td>                            
-                                <td width="50%"><h:outputText value=" Sistema de Reservas AerolineaEE"/></td>
+                                <td width="40%" align="right"><h:graphicImage value="recursos/Unicauca.jpg" height="100" width="14%"/></td>                            
+                                <td width="60%"><div style="color:#FFFFFF; font-size:20px;"><h:outputText value=" Sistema de Reservas AerolineaEE"/></div></td>
                             </tr>
                         </table>                                         
                     </td>
@@ -29,6 +29,7 @@ and open the template in the editor.
                         <h:commandLink value="Cerrar Sesion" action="#{adminMB.cerrarSesionAdmin()}"/>
                     </td>
                     <td width="80%" bgcolor="#EEE8AA" align="left" valign="top">
+                        <div style="text-align: right"><h:outputText value="Sesion Iniciada #{adminMB.admin.login}"/></div>
                         <h:outputLabel value="Nombre: "/>
                         <h:inputText value="#{ciudadMB.ciudad.nombre}"/><br/>
                         <h:commandButton value="Editar Ciudad" action="#{ciudadMB.editarCiudad()}" />
